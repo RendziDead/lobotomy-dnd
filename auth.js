@@ -20,6 +20,11 @@ window.showLogin = function() {
   document.getElementById("register-block").classList.add("hidden");
   document.getElementById("login-block").classList.remove("hidden");
 };
+window.backToMenu = function() {
+    document.getElementById("register-block").classList.add("hidden");
+    document.getElementById("login-block").classList.add("hidden");
+    document.getElementById("mode-select").classList.remove("hidden");
+  };
 
 // ======== Регистрация ========
 window.registerUser = async function() {
