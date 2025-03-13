@@ -1,14 +1,51 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+html, body {
+  margin: 0; padding: 0;
+  font-family: sans-serif;
 }
+
+h1, h2, p {
+  text-align: center;
+}
+
+.error-text {
+  color: red;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Контейнер формы (адаптивно) */
+#mode-select, #register-block, #login-block {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
 input {
-    display: block;
-    margin: 10px auto;
-    padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 1rem;
 }
+
 button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Адаптивный дизайн: при очень маленьком экране */
+@media (max-width: 500px) {
+  body {
     padding: 10px;
-    margin: 5px;
-    cursor: pointer;
+  }
+  input, button {
+    font-size: 1.2rem;
+  }
 }

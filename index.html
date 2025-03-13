@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D Персонаж</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D&D интерфейс: вход</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Добро пожаловать в D&D интерфейс!</h1>
-    <p>Здесь в будущем будет интерфейс для персонажа.</p>
 
-    <!-- Форма регистрации -->
-    <div id="auth">
-        <h2>Регистрация / Вход</h2>
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Пароль">
-        <button onclick="register()">Регистрация</button>
-        <button onclick="login()">Вход</button>
-    </div>
+<h1>Добро пожаловать в D&D интерфейс!</h1>
+<p>Здесь в будущем будет интерфейс для персонажа.</p>
 
-    <!-- Форма после входа -->
-    <div id="user-info" style="display:none;">
-        <h2>Привет, <span id="user-email"></span>!</h2>
-        <button onclick="logout()">Выйти</button>
-    </div>
+<!-- Блок выбора, что делать (ничего не вводим) -->
+<div id="mode-select" style="text-align:center;">
+  <button onclick="showRegister()">Регистрация</button>
+  <button onclick="showLogin()">Вход</button>
+</div>
 
-    <!-- Подключаем Firebase -->
-    <script type="module" src="firebase-config.js"></script>
-    <script type="module" src="auth.js"></script>
+<!-- Блок Регистрация (изначально скрыт) -->
+<div id="register-block" class="hidden">
+  <h2>Регистрация</h2>
+  <input type="text" id="reg-profile" placeholder="Имя профиля">
+  <input type="email" id="reg-email" placeholder="Email для подтверждения">
+  <input type="password" id="reg-password" placeholder="Пароль">
+  <button onclick="registerUser()">Зарегистрироваться</button>
+  <p id="reg-error" class="error-text"></p>
+</div>
+
+<!-- Блок Вход (изначально скрыт) -->
+<div id="login-block" class="hidden">
+  <h2>Вход</h2>
+  <input type="text" id="login-profile" placeholder="Имя профиля">
+  <input type="password" id="login-password" placeholder="Пароль">
+  <button onclick="loginUser()">Войти</button>
+  <p id="login-error" class="error-text"></p>
+</div>
+
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мой персонаж</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Это вторая страница (game.html)</h1>
+  <p>Здесь будет интерфейс для персонажа, виден только авторизованным.</p>
+  
+  <button onclick="logout()">Выйти</button>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module">
+    import { auth } from "./firebase-config.js";
+    import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+    function logout() {
+      signOut(auth).then(() => {
+        window.location.href = "index.html";
+      });
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user || !user.emailVerified) {
+        // Если не залогинен или не верифицирован
+        window.location.href = "index.html";
+      }
+    });
+
+    window.logout = logout; // чтобы кнопка работала
+  </script>
+</body>
+</html>
