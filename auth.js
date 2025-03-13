@@ -1,4 +1,4 @@
-import { auth, db, setDoc, doc } from "./firebase-config.js";
+import { auth, db } from "./firebase-config.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
 function register() {
@@ -6,17 +6,9 @@ function register() {
     const password = document.getElementById("password").value;
 
     createUserWithEmailAndPassword(auth, email, password)
-        .then(async (userCredential) => {
-            const user = userCredential.user;
-            
-            // Сохраняем пользователя в Firestore
-            await setDoc(doc(db, "users", user.uid), {
-                email: user.email,
-                username: email.split("@")[0] // Делаем ник из email
-            });
-
+        .then((userCredential) => {
             alert("Регистрация успешна!");
-            showUser(user);
+            showUser(userCredential.user);
         })
         .catch(error => alert(error.message));
 }
